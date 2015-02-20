@@ -6,17 +6,17 @@
     <title>SensePost</title>
 
     <link rel="shortcut icon" type="image/x-icon"
-          href="/resources/img/logo.ico">
+          href="/trench/resources/img/logo.ico">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    <link href="/resources/css/bootstrap.css" rel="stylesheet"
+    <link href="/trench/resources/css/bootstrap.css" rel="stylesheet"
           media="screen">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="/resources/js/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/trench/resources/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/trench/resources/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -48,7 +48,7 @@
 
 <script type="text/javascript">
 
-    var defaultReadTarget = "/static/targetRead.html";
+    var defaultReadTarget = "/trench/static/targetRead.html";
 
     $(document).ready(function () {
 
@@ -123,6 +123,9 @@
 
         $('#viewBtn').click(function () {
 
+            var customJavaScript = '&customJavaScript=' + $('#inputCustomJS').val();
+
+
             var target = $('#inputReadTarget').val();
 
             var emailX = $('#inputEmailX').val();
@@ -138,10 +141,11 @@
             var passwordStyle = '&passwordStyle=' + $('#inputPasswordStyle').val();
             var buttonStyle = '&buttonStyle=' + $('#inputButtonStyle').val();
 
-            var demoUrl = "/static/sandbox.html?target=" + target + '&userNameLeft=' + emailX + '&userNameTop=' + emailY + '&passwordLeft=' + passwordX + '&passwordTop=' + passwordY + '&buttonLeft=' + buttonX + '&buttonTop=' + buttonY;
+            var demoUrl = "/trench/static/sandbox.html?target=" + target + '&userNameLeft=' + emailX + '&userNameTop=' + emailY + '&passwordLeft=' + passwordX + '&passwordTop=' + passwordY + '&buttonLeft=' + buttonX + '&buttonTop=' + buttonY;
             demoUrl += encodeURIComponent(usernameStyle);
             demoUrl += encodeURIComponent(passwordStyle);
             demoUrl += encodeURIComponent(buttonStyle);
+            demoUrl += encodeURIComponent(customJavaScript);
 
             window.open(demoUrl, '_blank');
         });
@@ -179,19 +183,21 @@
 
     <div class="row">
         <div class="col-lg-3">
-            </div>
+        </div>
         <div class="col-lg-6">
 
             <div class="alert alert-dismissable alert-warning">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <h4>Warning!</h4>
-                <p>If your URL is loaded into the Target Site frame below, the URL provided is vulnerable to ClickJacking.</p>
+
+                <p>If your URL is loaded into the Target Site frame below, the URL provided is vulnerable to
+                    ClickJacking.</p>
             </div>
 
-            </div>
+        </div>
         <div class="col-lg-3">
         </div>
-        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-8">
@@ -344,6 +350,17 @@
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <a class="btn btn-danger" id="btnApplyButtonStyle">Apply</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputButtonStyle" class="col-lg-2 control-label">JavaScript</label>
+
+                        <div class="col-lg-10">
+
+                            <textarea class="form-control" rows="3" id="inputCustomJS"
+                                      placeholder="Your Custom JavaScript"></textarea>
+
                         </div>
                     </div>
 

