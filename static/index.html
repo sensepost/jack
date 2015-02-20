@@ -6,17 +6,17 @@
     <title>SensePost</title>
 
     <link rel="shortcut icon" type="image/x-icon"
-          href="/trench/resources/img/logo.ico">
+          href="/resources/img/logo.ico">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    <link href="/trench/resources/css/bootstrap.css" rel="stylesheet"
+    <link href="/resources/css/bootstrap.css" rel="stylesheet"
           media="screen">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="/trench/resources/js/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="/trench/resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -48,7 +48,7 @@
 
 <script type="text/javascript">
 
-    var defaultReadTarget = "/trench/static/targetRead.html";
+    var defaultReadTarget = "/static/targetRead.html";
 
     $(document).ready(function () {
 
@@ -141,7 +141,7 @@
             var passwordStyle = '&passwordStyle=' + $('#inputPasswordStyle').val();
             var buttonStyle = '&buttonStyle=' + $('#inputButtonStyle').val();
 
-            var demoUrl = "/trench/static/sandbox.html?target=" + target + '&userNameLeft=' + emailX + '&userNameTop=' + emailY + '&passwordLeft=' + passwordX + '&passwordTop=' + passwordY + '&buttonLeft=' + buttonX + '&buttonTop=' + buttonY;
+            var demoUrl = "/static/sandbox.html?target=" + target + '&userNameLeft=' + emailX + '&userNameTop=' + emailY + '&passwordLeft=' + passwordX + '&passwordTop=' + passwordY + '&buttonLeft=' + buttonX + '&buttonTop=' + buttonY;
             demoUrl += encodeURIComponent(usernameStyle);
             demoUrl += encodeURIComponent(passwordStyle);
             demoUrl += encodeURIComponent(buttonStyle);
