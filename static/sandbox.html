@@ -76,7 +76,7 @@
 
             $('#jacksButton').click(function () {
 
-                if (customJavaScript != null) {
+                if (customJavaScript.length>0) {
                     $('<script>').attr('type', 'text/javascript').text(customJavaScript).appendTo('head');
                 }
 
