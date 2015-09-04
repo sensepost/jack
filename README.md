@@ -12,14 +12,14 @@ Jack makes use of static HTML and JavaScript.
 Contents
 ====
 Jack Contains:
-resources/css/bootstrap-theme.css,bootstrap.css,bootstrap.icon-large.css
-resources/img/logo.png,logo.ico
-resources/js/bootstrap.min.js,jquery-1.11.0.js
+* resources/css/bootstrap-theme.css,bootstrap.css,bootstrap.icon-large.css
+* resources/img/logo.png,logo.ico
+* resources/js/bootstrap.min.js,jquery-1.11.0.js
 
-static/index.html
-static/sandbox.html
-static/targetRead.html
-static/targetLogin.html
+* static/index.html
+* static/sandbox.html
+* static/targetRead.html
+* static/targetLogin.html
 
 Running
 ====
