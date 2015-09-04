@@ -19,7 +19,7 @@ Jack Contains:
 
 Running
 ====
-Jack is web based and requires a web server to serve its HTML and JS content. Typically something like Apache will suffice but anything that is able to serve HTML content to a browser will do. Place the two folders, resources and static into a "www" type like directory and request the HTML file "index.html" to start using Jack.
+Jack is web based and requires either a web server to serve its HTML and JS content or can be run locally. Typically something like Apache will suffice but anything that is able to serve HTML content to a browser will do. Simply download Jack's contents and open "index.html" with your browser locally and Jack is ready to go. Alternatively if you prefer the older UI for Jack, open "oldIndex.html" with your browser for the old UI.
 
 Notes
 ====
