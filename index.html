@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Jack</title>
+
+    <link href="resources/css/bootstrap.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
+
+    <link rel="shortcut icon" type="image/x-icon"
+          href="resources/img/logo.ico">
+
+    <link rel="stylesheet" href="resources/css/jquery-ui.theme.css">
+
+    <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
+
+
+    <script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+    <style>
+        #draggable {
+            width: 340px;
+            height: 800px;
+            padding: 0.5em;
+            top: 70px;
+            left: 100px;
+
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(function () {
+                $("#draggable").draggable();
+                $("#emailDraggable").draggable();
+                $("#passwordDraggable").draggable();
+                $("#loginDraggable").draggable();
+            });
+
+
+            $('#btnLoadReadTarget').click(function () {
+                var newTarget = $('#inputReadTarget').val();
+                $("#targetIframe").attr('src', newTarget);
+            });
+
+            $('#applyBtn').click(function () {
+
+            });
+
+            $('#viewBtn').click(function () {
+
+
+                var customJavaScript = '&customJavaScript=' + $('#inputCustomJS').val();
+
+                var newTarget = $('#inputReadTarget').val();
+
+                var emailPosition = $('#emailInput').offset();
+
+                var emailX = emailPosition.left;
+                var emailY = emailPosition.top;
+
+//                console.log('EMAIL X: ' + emailX);
+//                console.log('EMAIL Y: ' + emailY);
+
+                var passwordPosition = $('#passwordInput').offset();
+
+                var passwordX = passwordPosition.left;
+                var passwordY = passwordPosition.top;
+
+//                console.log('PASSWORD X: ' + passwordX);
+//                console.log('PASSWORD Y: ' + passwordY);
+
+                var buttonPosition = $('#jacksButton').offset();
+
+                var buttonX = buttonPosition.left;
+                var buttonY = buttonPosition.top;
+
+//                console.log('BUTTON X: ' + buttonX);
+//                console.log('BUTTON Y: ' + buttonY);
+
+
+                var usernameStyle = '&usernameStyle=' + $('#inputEmailStyle').val();
+//                console.log('EMAIL STYLE: '+usernameStyle);
+                var passwordStyle = '&passwordStyle=' + $('#inputPasswordStyle').val();
+                var buttonStyle = '&buttonStyle=' + $('#inputButtonStyle').val();
+
+
+                var demoUrl = "sandbox.html?target=" + newTarget + '&userNameLeft=' + emailX + '&userNameTop=' + emailY + '&passwordLeft=' + passwordX + '&passwordTop=' + passwordY + '&buttonLeft=' + buttonX + '&buttonTop=' + buttonY;
+                demoUrl += encodeURIComponent(usernameStyle);
+                demoUrl += encodeURIComponent(passwordStyle);
+                demoUrl += encodeURIComponent(buttonStyle);
+                demoUrl += encodeURIComponent(customJavaScript);
+
+                window.open(demoUrl, '_blank');
+
+            });
+
+        });
+    </script>
+
+</head>
+
+<body style=" margin: 0px;padding: 0px; border: 0px;width: 100%;height: 100%;">
+
+<div style="z-index: 2; position: absolute; background-color: #004b63" id="draggable" class="ui-widget-header">
+
+
+
+
+    <h2 class="text-center">
+        Configuration
+    </h2>
+
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputReadTarget" class="col-lg-2 control-label">URL</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputReadTarget" placeholder="http://site.com">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <a class="btn btn-primary" id="btnLoadReadTarget">Load</a>
+                    <a class="btn btn-success" id="viewBtn">View</a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmailStyle" class="col-lg-2 control-label">Email Style</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputEmailStyle" placeholder="Style">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPasswordStyle" class="col-lg-2 control-label">Password Style</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputPasswordStyle" placeholder="Style">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputButtonStyle" class="col-lg-2 control-label">Button Style</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputButtonStyle" placeholder="Style">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputButtonStyle" class="col-lg-2 control-label">JavaScript</label>
+
+                <div class="col-lg-10">
+
+                            <textarea class="form-control" rows="3" id="inputCustomJS"
+                                      placeholder="Your Custom JavaScript"></textarea>
+
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<div style="z-index: 2; position: absolute; background-color: #004b63;left:220px" id="emailDraggable" draggable="true">
+    <p class="text-center">DRAG ME</p>
+    <input id="emailInput" type="text" placeholder="Email">
+</div>
+
+<div style="z-index: 2; position: absolute; background-color: #306328;left:520px" id="passwordDraggable"
+     draggable="true">
+    <p class="text-center">DRAG ME</p>
+    <input id="passwordInput" type="password" placeholder="Password">
+</div>
+
+
+<div style="z-index: 2; position: absolute; background-color: #630f26;left:20px" id="loginDraggable" draggable="true">
+    <p class="text-center">DRAG ME</p>
+    <button type="submit" id="jacksButton" class="">Login
+    </button>
+</div>
+
+
+<iframe id="targetIframe" scrolling="no" frameBorder="0"
+        style="position: relative;overflow: hidden;margin: 0; padding: 0;display: block"
+        src="" width="100%"
+        height="1000">
+</iframe>
+
+</body>
+
+</html>

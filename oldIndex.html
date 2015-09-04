@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Jack</title>
+
+    <link rel="shortcut icon" type="image/x-icon"
+          href="resources/img/logo.ico">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="resources/css/bootstrap.css" rel="stylesheet" media="screen">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var defaultReadTarget = "targetRead.html";
+
+    $(document).ready(function () {
+
+        $("#targetReadIframe").attr('src', defaultReadTarget);
+        $("#readTargetLead").html(defaultReadTarget);
+
+        $('#inputReadTarget').val(defaultReadTarget);
+        $('#configurationLead').html(defaultReadTarget);
+
+        $('#btnLoadReadTarget').click(function () {
+            var newTarget = $('#inputReadTarget').val();
+
+            $("#targetReadIframe").attr('src', newTarget);
+
+
+            if (newTarget.length > 30) {
+                $("#readTargetLead").html(newTarget.substring(0, 30) + '...');
+                $('#configurationLead').html(newTarget.substring(0, 30) + '...');
+            }
+            else {
+                $("#readTargetLead").html(newTarget);
+                $('#configurationLead').html(newTarget);
+            }
+        });
+
+        $('#btnApplyClickXandY').click(function () {
+            var inputX = $('#inputX').val();
+            var inputY = $('#inputY').val();
+
+            var updatedStyle = 'position: absolute; z-index: 1; top: ' + inputY + 'px; left: ' + inputX + 'px';
+
+            $('#malClickContainer').attr('style', updatedStyle);
+        });
+
+
+        $('#btnApplyEmailXandY').click(function () {
+            var inputX = $('#inputEmailX').val();
+            var inputY = $('#inputEmailY').val();
+
+            var updatedStyle = 'position: absolute; z-index: 2; top: ' + inputY + 'px; left: ' + inputX + 'px' + ';outline:none; box-shadow:none;border: none !important;height: 10px;width: 325px';
+
+            $('#inputMalEmail').attr('style', updatedStyle);
+        });
+
+
+        $('#btnApplyPasswordXandY').click(function () {
+            var inputX = $('#inputPasswordX').val();
+            var inputY = $('#inputPasswordY').val();
+
+            var updatedStyle = 'position: absolute; z-index: 2; top: ' + inputX + 'px; left: ' + inputY + 'px' + ';outline:none; box-shadow:none;border: none !important;height: 10px;width: 325px';
+
+            $('#inputMalPassword').attr('style', updatedStyle);
+        });
+
+
+        $('#btnApplyLoginXandY').click(function () {
+            var inputX = $('#inputLoginX').val();
+            var inputY = $('#inputLoginY').val();
+
+            var updatedStyle = 'position: absolute; z-index: 2; top: ' + inputX + 'px; left: ' + inputY + 'px' + 'outline:none; box-shadow:none;border: none !important;';
+
+            $('#jacksButton').attr('style', updatedStyle);
+        });
+
+
+        $('#jacksButton').click(function () {
+            var jacksEmail = $('#inputMalEmail').val();
+            var jacksPassword = $('#inputMalPassword').val();
+
+            alert('Hit the road Jack...' + jacksEmail + ', ' + jacksPassword);
+        });
+
+        $('#viewBtn').click(function () {
+
+            var customJavaScript = '&customJavaScript=' + $('#inputCustomJS').val();
+
+
+            var target = $('#inputReadTarget').val();
+
+            var emailX = $('#inputEmailX').val();
+            var emailY = $('#inputEmailY').val();
+
+            var passwordX = $('#inputPasswordX').val();
+            var passwordY = $('#inputPasswordY').val();
+
+            var buttonX = $('#inputLoginX').val();
+            var buttonY = $('#inputLoginY').val();
+
+            var usernameStyle = '&usernameStyle=' + $('#inputEmailStyle').val();
+            var passwordStyle = '&passwordStyle=' + $('#inputPasswordStyle').val();
+            var buttonStyle = '&buttonStyle=' + $('#inputButtonStyle').val();
+
+            var demoUrl = "sandbox.html?target=" + target + '&userNameLeft=' + emailX + '&userNameTop=' + emailY + '&passwordLeft=' + passwordX + '&passwordTop=' + passwordY + '&buttonLeft=' + buttonX + '&buttonTop=' + buttonY;
+            demoUrl += encodeURIComponent(usernameStyle);
+            demoUrl += encodeURIComponent(passwordStyle);
+            demoUrl += encodeURIComponent(buttonStyle);
+            demoUrl += encodeURIComponent(customJavaScript);
+
+            window.open(demoUrl, '_blank');
+        });
+
+
+        $('#btnApplyEmailStyle').click(function () {
+            var newEmailStyle = $('#inputEmailStyle').val();
+            $('#inputMalEmail').attr('style', newEmailStyle);
+        });
+
+        $('#btnApplyPasswordStyle').click(function () {
+            var newPasswordStyle = $('#inputPasswordStyle').val();
+            $('#inputMalPassword').attr('style', newPasswordStyle);
+        });
+
+
+        $('#btnApplyButtonStyle').click(function () {
+            var newButtonStyle = $('#inputButtonStyle').val();
+            $('#jacksButton').attr('style', newButtonStyle);
+        });
+
+    });
+
+</script>
+
+<div class="container">
+
+    <div class="bs-docs-section">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center">Jack</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+
+                <div class="alert alert-dismissable alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <h4>Warning!</h4>
+
+                    <p>If your URL is loaded into the Target Site frame below, the URL provided is vulnerable to
+                        ClickJacking.</p>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-8">
+
+                <h2 class="text-center" id="targetReadHeader">Target Site:</h2>
+
+                <p class="lead text-center" id="readTargetLead"></p>
+
+                <div id="iFrameReadContainer" style="position: relative">
+
+                    <iframe id="targetReadIframe" style="opacity: 1" src="" width="100%"
+                            height="600">
+                    </iframe>
+                </div>
+
+                <input type="text"
+                       style="position: absolute; z-index: 2; top: 210px; left: 20px;outline:none; box-shadow:none;border: none !important;height: 10px;width: 150px"
+                       autocomplete="off" class="form-control" id="inputMalEmail" placeholder="Email">
+
+
+                <input type="password"
+                       style="position: absolute; z-index: 2; top: 250px; left: 20px;outline:none; box-shadow:none;border: none !important;height: 10px;width: 150px"
+                       autocomplete="off" class="form-control" id="inputMalPassword" placeholder="Password">
+
+
+                <button type="submit"
+                        style="outline:none; box-shadow:none;border: none !important;position: absolute; z-index: 2; top: 280px; left: 20px;"
+                        id="jacksButton" class="">Login
+                </button>
+
+            </div>
+            <div class="col-lg-4">
+                <h2 class="text-center">
+                    Configuration:
+                </h2>
+
+
+                <p class="lead text-center" id="configurationLead"></p>
+
+                <form class="form-horizontal">
+
+
+                    <fieldset>
+
+                        <div class="form-group">
+                            <a class="btn btn-success btn-lg btn-block" id="viewBtn">View</a>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputReadTarget" class="col-lg-2 control-label">URL</label>
+
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputReadTarget" placeholder="Target">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <a class="btn btn-primary" id="btnLoadReadTarget">Load</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Email X&Y</label>
+
+                            <div class="col-lg-4">
+                                <a class="btn btn-default" id="btnApplyEmailXandY">Apply</a>
+
+                            </div>
+
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" id="inputEmailX" placeholder="X">
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" id="inputEmailY" placeholder="Y">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-lg-2 control-label">PW X&Y</label>
+
+                            <div class="col-lg-4">
+                                <a class="btn btn-default" id="btnApplyPasswordXandY">Apply</a>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" id="inputPasswordX" placeholder="X">
+                            </div>
+
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" id="inputPasswordY" placeholder="Y">
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Login X&Y</label>
+
+                            <div class="col-lg-4">
+                                <a class="btn btn-default" id="btnApplyLoginXandY">Apply</a>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" id="inputLoginX" placeholder="X">
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" id="inputLoginY" placeholder="Y">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputEmailStyle" class="col-lg-2 control-label">Email Style</label>
+
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputEmailStyle" placeholder="Style">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <a class="btn btn-danger" id="btnApplyEmailStyle">Apply</a>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputPasswordStyle" class="col-lg-2 control-label">Password Style</label>
+
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputPasswordStyle" placeholder="Style">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <a class="btn btn-danger" id="btnApplyPasswordStyle">Apply</a>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputButtonStyle" class="col-lg-2 control-label">Button Style</label>
+
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputButtonStyle" placeholder="Style">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <a class="btn btn-danger" id="btnApplyButtonStyle">Apply</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputButtonStyle" class="col-lg-2 control-label">JavaScript</label>
+
+                            <div class="col-lg-10">
+
+                            <textarea class="form-control" rows="3" id="inputCustomJS"
+                                      placeholder="Your Custom JavaScript"></textarea>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 30px;">
+        <div class="row text-center">
+            <div class="col-lg-12">
+
+                <a href="http://www.sensepost.com" target="_blank">
+                    <img src="resources/img/logo.png"/>
+                </a>
+
+            </div>
+        </div>
+
+    </footer>
+
+
+</div>
+
+</body>
+
+</html>
