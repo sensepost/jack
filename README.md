@@ -7,7 +7,7 @@ Overview
 =====
 Jack is a web based ClickJacking PoC development assistance tool.
 
-Jack makes use of static html and JavaScript. 
+Jack makes use of static HTML and JavaScript. 
 
 Contents
 ====
