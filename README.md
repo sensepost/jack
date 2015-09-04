@@ -12,6 +12,7 @@ Jack makes use of static HTML and JavaScript.
 Contents
 ====
 Jack Contains:
+* resources/**
 * index.html
 * sandbox.html
 * oldIndex.html
