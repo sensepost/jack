@@ -1,7 +1,7 @@
 jack
 ====
 
-By Chris Le Roy (brompwnie) chris@sensepost.com
+By Chris Le Roy (@brompwnie) chris@sensepost.com
 
 Overview
 =====
