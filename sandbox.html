@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+     <meta charset="UTF-8">
     <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
 
 
@@ -9,10 +10,17 @@
           href="resources/img/logo.ico">
 
     <script type="text/javascript">
+        var sPageURL=''
 
-        function getURLParameter(sParam) {
+         function getURLParameter(sParam) {
+            var sPageURL='';
+            if (window.location.search.substring(1).length == 0) {
+                sPageURL = config_url.substring(1);
+            }
+            else {
+                sPageURL = window.location.search.substring(1);
+            }
 
-            var sPageURL = window.location.search.substring(1);
             var decoded = decodeURIComponent(sPageURL);
             var sURLVariables = decoded.split('&');
 
