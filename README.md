@@ -24,3 +24,8 @@ Jack is web based and requires either a web server to serve its HTML and JS cont
 Notes
 ====
 Depending on your setup, you may need to configure your browser to allow Jack to load resources that are being served via encrypted channels.
+
+
+License
+===
+Jack is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (http://creativecommons.org/licenses/by-nc-sa/4.0) Permissions beyond the scope of this license may be available at http://sensepost.com/contact us/.
